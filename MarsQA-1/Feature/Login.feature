@@ -1,8 +1,7 @@
-﻿Feature: Login
-	In order to avoid silly mistakes
-	As a math idiot
-	I want to be told the sum of two numbers
+﻿Feature:Login
+	As a seller I wanted to login to skillswap website
 
 @mytag
-Scenario: Login to website
-	Given I login to the website
+Scenario: [Login to website with valid credentials]
+	Given I login to the website successfully.
+	
