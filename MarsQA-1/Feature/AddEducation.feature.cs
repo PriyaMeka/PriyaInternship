@@ -76,9 +76,8 @@ namespace MarsQA_1.Feature
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("[Add Education to Profile]")]
         [NUnit.Framework.CategoryAttribute("tag1")]
-        [NUnit.Framework.TestCaseAttribute("JNTU", "India", "M.Tech", "Software Engineering", "2013", null)]
-        [NUnit.Framework.TestCaseAttribute("JNTU", "India", "B.Tech", "Information Technology", "2011", null)]
-        public virtual void AddEducationToProfile(string name, string country, string title, string degree, string year, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("India", "JNTU", "M.Tech", "Software Engineering", "2013", null)]
+        public virtual void AddEducationToProfile(string country, string university, string title, string degree, string year, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "tag1"};
@@ -112,11 +111,11 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("[Navigate to Education tab]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
- testRunner.When(string.Format("[I add \'{0}\' and \'{1}\' and \'{2}\' and \'{3}\' and \'{4}\' to Education tab]", name, country, title, degree, year), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("[I add \'{0}\' and \'{1}\' and \'{2}\' and \'{3}\' and \'{4}\' to Education tab]", country, university, title, degree, year), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
  testRunner.Then(string.Format("[The \'{0}\' and \'{1}\' and \'{2}\' and \'{3}\' and \'{4}\' should be created successfully" +
-                            ".]", name, country, title, degree, year), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+                            ".]", country, university, title, degree, year), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

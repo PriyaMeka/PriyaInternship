@@ -76,12 +76,17 @@ namespace MarsQA_1.Feature
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("[Login to website with valid credentials]")]
         [NUnit.Framework.CategoryAttribute("mytag")]
-        public virtual void LoginToWebsiteWithValidCredentials()
+        [NUnit.Framework.TestCaseAttribute("priyanka.mekha@gmail.com", "Bollepalli88", null)]
+        public virtual void LoginToWebsiteWithValidCredentials(string email, string password, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
+            string[] @__tags = new string[] {
                     "mytag"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[Login to website with valid credentials]", null, new string[] {
-                        "mytag"});
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[Login to website with valid credentials]", null, @__tags);
 #line 5
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -103,7 +108,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 6
- testRunner.Given("I login to the website successfully.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given(string.Format("[Login to the SkillSwap page using \'{0}\' and \'{1}\' successfully.]", email, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             }
             this.ScenarioCleanup();

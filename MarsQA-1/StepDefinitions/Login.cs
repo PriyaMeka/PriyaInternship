@@ -1,4 +1,5 @@
 ﻿using MarsQA_1.Helpers;
+using MarsQA_1.Pages;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -12,8 +13,8 @@ namespace MarsQA_1.Feature
     [Binding]
     public class Login  : Driver
     {
-        [Given(@"I login to the website successfully\.")]
-        public void GivenILoginToTheWebsiteSuccessfully_()
+        [Given(@"\[Login to the SkillSwap page using '([^']*)' and '([^']*)' successfully\.]")]
+        public void GivenLoginToTheSkillSwapPageUsingAndSuccessfully_(string Email, string Password)
         {
             Driver.NavigateUrl();
 
@@ -21,16 +22,14 @@ namespace MarsQA_1.Feature
             Driver.driver.FindElement(By.XPath("//A[@class='item'][text()='Sign In']")).Click();
 
             //Enter Username
-            Driver.driver.FindElement(By.XPath("(//INPUT[@type='text'])[2]")).SendKeys("priyanka.mekha@gmail.com");
+            Driver.driver.FindElement(By.XPath("(//INPUT[@type='text'])[2]")).SendKeys(Email);
 
             //Enter password
-            Driver.driver.FindElement(By.XPath("//INPUT[@type='password']")).SendKeys("Bollepalli88");
+            Driver.driver.FindElement(By.XPath("//INPUT[@type='password']")).SendKeys(Password);
 
             //Click on Login Button
             Driver.driver.FindElement(By.XPath("//BUTTON[@class='fluid ui teal button'][text()='Login']")).Click();
-
         }
-
 
     }
 

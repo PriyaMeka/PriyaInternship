@@ -17,20 +17,24 @@ namespace MarsQA_1.StepDefinitions
         }
 
         [When(@"\[I add '([^']*)' and '([^']*)' and '([^']*)' and '([^']*)' and '([^']*)' to Education tab]")]
-        public void WhenIAddAndAndAndAndToEducationTab(string Name, string Country, string Title, string Degree, string Year)
+        public void WhenIAddAndAndAndAndToEducationTab(string Country, string University, string Title, string Degree, string Year)
         {
-          addEducationObj.AddEducation(driver, Name, Country, Title, Degree, Year); 
+          addEducationObj.AddEducation(driver, Country, University, Title, Degree, Year); 
         }
 
         [Then(@"\[The '([^']*)' and '([^']*)' and '([^']*)' and '([^']*)' and '([^']*)' should be created successfully\.]")]
-        public void ThenTheAndAndAndAndShouldBeCreatedSuccessfully_(string Name, string Country, string Title, string Degree, string Year)
+        public void ThenTheAndAndAndAndShouldBeCreatedSuccessfully_(string Country, string University, string Title, string Degree, string Year)
         {
-            string actualName = addEducationObj.GetName(driver);
-            string actualCountry = addEducationObj.GetCountry(driver);
-            string actualTitle = addEducationObj.GetTitle(driver);
-            string actualDegree = addEducationObj.GetDegree(driver);
-            string actualYear = addEducationObj.GetYear(driver);
-            Assert.Pass();
+            string ActualCountry = addEducationObj.GetCountry(driver);
+            string ActualUniversity= addEducationObj.GetUniversity(driver);
+            string ActualTitle = addEducationObj.GetTitle(driver);
+            string ActualDegree = addEducationObj.GetDegree(driver);
+            string ActualYear = addEducationObj.GetYear(driver);
+            Assert.That(ActualCountry == Country, "Actual country and Expected country match");
+            Assert.That(ActualUniversity == University, "Actual name and Expected name match");
+            Assert.That(ActualTitle == Title, "Actual title and Expected title match");
+            Assert.That(ActualDegree == Degree, "Actual degree and Expected degree match");
+            Assert.That(ActualYear == Year, "Actual year and Expected year match");
         }
     }
 }

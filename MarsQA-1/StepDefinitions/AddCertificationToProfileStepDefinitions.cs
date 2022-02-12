@@ -25,10 +25,12 @@ namespace MarsQA_1.StepDefinitions
         [Then(@"\[The '([^']*)' and '([^']*)' and '([^']*)' should be created successfully\.]")]
         public void ThenTheAndAndShouldBeCreatedSuccessfully_(string Certificate, string CertifiedFrom, string Year)
         {
-            string actualCertificate = addCertificationObj.GetCertificate(driver);
-            string actualCertifiedFrom = addCertificationObj.GetCertifiedFrom(driver);
-            string actualYear = addCertificationObj.GetYear(driver);
-            Assert.Pass();
+            string ActualCertificate = addCertificationObj.GetCertificate(driver);
+            string ActualCertifiedFrom = addCertificationObj.GetCertifiedFrom(driver);
+            string ActualYear = addCertificationObj.GetYear(driver);
+            Assert.That(ActualCertificate != Certificate, "Actual certificate and Expected certificate do not match");
+            Assert.That(ActualCertifiedFrom != CertifiedFrom, "Actual company and Expected company do not match");
+            Assert.That(ActualYear != Year, "Actual year and expected year not match");
         }
     }
 }

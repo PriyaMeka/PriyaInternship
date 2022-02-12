@@ -28,7 +28,7 @@ namespace MarsQA_1.Feature
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "AddSkills.feature"
+#line 1 "Skills.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
@@ -74,13 +74,13 @@ namespace MarsQA_1.Feature
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("[Add skills to Profile]")]
+        [NUnit.Framework.DescriptionAttribute("1 [Add skills to Profile]")]
         [NUnit.Framework.CategoryAttribute("tag1")]
         [NUnit.Framework.TestCaseAttribute("Java", "Beginner", null)]
         [NUnit.Framework.TestCaseAttribute("Manual Testing", "Intermediate", null)]
         [NUnit.Framework.TestCaseAttribute("C#", "Beginner", null)]
         [NUnit.Framework.TestCaseAttribute("Automation", "Beginner", null)]
-        public virtual void AddSkillsToProfile(string skill, string skillLevel, string[] exampleTags)
+        public virtual void _1AddSkillsToProfile(string skill, string skillLevel, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "tag1"};
@@ -89,7 +89,7 @@ namespace MarsQA_1.Feature
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             string[] tagsOfScenario = @__tags;
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[Add skills to Profile]", null, @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("1 [Add skills to Profile]", null, @__tags);
 #line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -124,14 +124,19 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("[update skills in Profile page]")]
+        [NUnit.Framework.DescriptionAttribute("2  [update skills in Profile page]")]
         [NUnit.Framework.CategoryAttribute("tag1")]
-        public virtual void UpdateSkillsInProfilePage()
+        [NUnit.Framework.TestCaseAttribute("SpecFlow", "Intermediate", null)]
+        public virtual void _2UpdateSkillsInProfilePage(string skill1, string skillLevel1, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
+            string[] @__tags = new string[] {
                     "tag1"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[update skills in Profile page]", null, new string[] {
-                        "tag1"});
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("2  [update skills in Profile page]", null, @__tags);
 #line 19
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -156,22 +161,22 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("[Navigate to the Skills tab]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 21
- testRunner.When("[I update skills to Skills tab]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("[I update \'{0}\' and \'{1}\' to Skills tab]", skill1, skillLevel1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 22
- testRunner.Then("[The skills should be updated successfully]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("[The \'{0}\' and \'{1}\' should be updated successfully]", skill1, skillLevel1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("[delete skills in Profile page]")]
-        public virtual void DeleteSkillsInProfilePage()
+        [NUnit.Framework.DescriptionAttribute("3 [delete skills in Profile page]")]
+        public virtual void _3DeleteSkillsInProfilePage()
         {
             string[] tagsOfScenario = ((string[])(null));
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[delete skills in Profile page]", null, ((string[])(null)));
-#line 24
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("3 [delete skills in Profile page]", null, ((string[])(null)));
+#line 28
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -191,13 +196,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 25
+#line 29
  testRunner.Given("[Navigate to the Skills tab.]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 26
+#line 30
  testRunner.When("[I delete a skill in Skills tab]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 27
+#line 31
     testRunner.Then("[The skill should be deleted successfully]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

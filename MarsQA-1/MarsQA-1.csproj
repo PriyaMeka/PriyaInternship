@@ -79,6 +79,9 @@
     <Reference Include="RelevantCodes.ExtentReports, Version=1.4.9.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ExtentReports.2.41.0\lib\RelevantCodes.ExtentReports.dll</HintPath>
     </Reference>
+    <Reference Include="SeleniumExtras.WaitHelpers, Version=3.11.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetSeleniumExtras.WaitHelpers.3.11.0\lib\net45\SeleniumExtras.WaitHelpers.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.3.0\lib\netstandard1.1\System.Buffers.dll</HintPath>
@@ -149,14 +152,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SpecflowPages\Pages\AddSkill.cs" />
+    <Compile Include="SpecflowPages\Helpers\Wait.cs" />
+    <Compile Include="SpecflowPages\Pages\Skills.cs" />
     <Compile Include="SpecflowPages\Pages\Certification.cs" />
     <Compile Include="SpecflowPages\Pages\Education.cs" />
     <Compile Include="SpecflowPages\Pages\Language.cs" />
     <Compile Include="StepDefinitions\AddCertificationToProfileStepDefinitions.cs" />
     <Compile Include="StepDefinitions\AddEducationToProfileStepDefinitions.cs" />
-    <Compile Include="StepDefinitions\AddLanguagesToProfileStepDefinitions.cs" />
-    <Compile Include="StepDefinitions\AddSkillsToProfileStepDefinitions.cs" />
+    <Compile Include="StepDefinitions\LanguagesToProfileStepDefinitions.cs" />
+    <Compile Include="StepDefinitions\SkillsToProfileStepDefinitions.cs" />
     <Compile Include="StepDefinitions\Login.cs" />
     <Compile Include="SpecflowPages\Helpers\CommonMethods.cs" />
     <Compile Include="SpecflowPages\Helpers\ConstantHelpers.cs" />
@@ -170,8 +174,8 @@
     <None Include="App.config" />
     <None Include="Feature\AddCertification.feature" />
     <None Include="Feature\AddEducation.feature" />
-    <None Include="Feature\AddLanguage.feature" />
-    <None Include="Feature\AddSkills.feature" />
+    <None Include="Feature\Language.feature" />
+    <None Include="Feature\Skills.feature" />
     <None Include="Feature\Login.feature" />
     <None Include="SpecflowTests\Data\Data.xlsx" />
     <None Include="packages.config" />

@@ -20,22 +20,22 @@ namespace MarsQA_1.Feature
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.1.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Add,Edit and Delete Skills from Profile page")]
-    public partial class AddEditAndDeleteSkillsFromProfilePageFeature
+    [NUnit.Framework.DescriptionAttribute("Add,Update and Delete languages to Profile")]
+    public partial class AddUpdateAndDeleteLanguagesToProfileFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "AddSkills.feature"
+#line 1 "Language.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Add,Edit and Delete Skills from Profile page", "Seller is able to add,update and delete skills from profile page", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Add,Update and Delete languages to Profile", "Seller is able to add,update and delete languages to profile page", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -74,13 +74,12 @@ namespace MarsQA_1.Feature
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("[Add skills to Profile]")]
+        [NUnit.Framework.DescriptionAttribute("1 [Add languages to Profile]")]
         [NUnit.Framework.CategoryAttribute("tag1")]
-        [NUnit.Framework.TestCaseAttribute("Java", "Beginner", null)]
-        [NUnit.Framework.TestCaseAttribute("Manual Testing", "Intermediate", null)]
-        [NUnit.Framework.TestCaseAttribute("C#", "Beginner", null)]
-        [NUnit.Framework.TestCaseAttribute("Automation", "Beginner", null)]
-        public virtual void AddSkillsToProfile(string skill, string skillLevel, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("Hindi", "Basic", null)]
+        [NUnit.Framework.TestCaseAttribute("Telugu", "Native/Bilingual", null)]
+        [NUnit.Framework.TestCaseAttribute("English", "Fluent", null)]
+        public virtual void _1AddLanguagesToProfile(string language, string languageLevel, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "tag1"};
@@ -89,8 +88,8 @@ namespace MarsQA_1.Feature
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             string[] tagsOfScenario = @__tags;
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[Add skills to Profile]", null, @__tags);
-#line 7
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("1 [Add languages to Profile]", null, @__tags);
+#line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -110,29 +109,27 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
+#line 7
+ testRunner.Given("[Navigate to Language tab]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
 #line 8
- testRunner.Given("[Navigate to Skills tab]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.When(string.Format("[I add \'{0}\' and \'{1}\' to Languages tab]", language, languageLevel), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
- testRunner.When(string.Format("[I add \'{0}\' and \'{1}\' to Skills tab]", skill, skillLevel), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 10
- testRunner.Then(string.Format("[The \'{0}\' and \'{1}\' should be created successfully]", skill, skillLevel), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("[The \'{0}\' and \'{1}\' should be created successfully.]", language, languageLevel), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("[update skills in Profile page]")]
-        [NUnit.Framework.CategoryAttribute("tag1")]
-        public virtual void UpdateSkillsInProfilePage()
+        [NUnit.Framework.DescriptionAttribute("2  [update language in Language tab]")]
+        [NUnit.Framework.TestCaseAttribute("Sanskrit", "Native/Bilingual", null)]
+        public virtual void _2UpdateLanguageInLanguageTab(string language1, string languageLevel1, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
-                    "tag1"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[update skills in Profile page]", null, new string[] {
-                        "tag1"});
-#line 19
+            string[] tagsOfScenario = exampleTags;
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("2  [update language in Language tab]", null, exampleTags);
+#line 17
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -152,26 +149,26 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
+#line 18
+ testRunner.Given("[Navigate to the Languages tab]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 19
+ testRunner.When(string.Format("[I update \'{0}\' and \'{1}\' in Languages tab]", language1, languageLevel1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
 #line 20
- testRunner.Given("[Navigate to the Skills tab]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 21
- testRunner.When("[I update skills to Skills tab]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 22
- testRunner.Then("[The skills should be updated successfully]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("[The \'{0}\' and \'{1}\' should be updated successfully.]", language1, languageLevel1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("[delete skills in Profile page]")]
-        public virtual void DeleteSkillsInProfilePage()
+        [NUnit.Framework.DescriptionAttribute("3 [delete language in Language tab]")]
+        public virtual void _3DeleteLanguageInLanguageTab()
         {
             string[] tagsOfScenario = ((string[])(null));
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[delete skills in Profile page]", null, ((string[])(null)));
-#line 24
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("3 [delete language in Language tab]", null, ((string[])(null)));
+#line 26
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -191,14 +188,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 25
- testRunner.Given("[Navigate to the Skills tab.]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 26
- testRunner.When("[I delete a skill in Skills tab]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
 #line 27
-    testRunner.Then("[The skill should be deleted successfully]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Given("[Navigate to the Languages tab.]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 28
+ testRunner.When("[I delete a Language in Languages tab]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 29
+    testRunner.Then("[The language should be deleted successfully]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
