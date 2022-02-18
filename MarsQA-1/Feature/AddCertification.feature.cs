@@ -74,11 +74,11 @@ namespace MarsQA_1.Feature
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("[Add Certification to Profile]")]
+        [NUnit.Framework.DescriptionAttribute("1. [Add Certification to Profile]")]
         [NUnit.Framework.CategoryAttribute("tag1")]
         [NUnit.Framework.TestCaseAttribute("Certified Tester Foundation Level (CTFL)", "ISTQB", "2014", null)]
         [NUnit.Framework.TestCaseAttribute("Certified Test Analyst", "Industry Connect", "2022", null)]
-        public virtual void AddCertificationToProfile(string certificate, string certifiedFrom, string year, string[] exampleTags)
+        public virtual void _1_AddCertificationToProfile(string certificate, string certifiedFrom, string year, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "tag1"};
@@ -87,7 +87,7 @@ namespace MarsQA_1.Feature
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             string[] tagsOfScenario = @__tags;
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[Add Certification to Profile]", null, @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("1. [Add Certification to Profile]", null, @__tags);
 #line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -109,13 +109,50 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 7
- testRunner.Given("[Navigate to Certification tab]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I am on my Profile Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
  testRunner.When(string.Format("[I add \'{0}\' and \'{1}\' and \'{2}\' to Certification tab]", certificate, certifiedFrom, year), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
- testRunner.Then(string.Format("[The \'{0}\' and \'{1}\' and \'{2}\' should be created successfully.]", certificate, certifiedFrom, year), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("[The Certification tab with \'{0}\' should be created successfully.]", certificate), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("2.Reading the record created for Certification")]
+        [NUnit.Framework.TestCaseAttribute("2", null)]
+        public virtual void _2_ReadingTheRecordCreatedForCertification(string count, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("2.Reading the record created for Certification", null, exampleTags);
+#line 16
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 17
+testRunner.Given("I am on my Profile Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 18
+testRunner.Then(string.Format(": \'{0}\' Records must have been created successfully", count), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

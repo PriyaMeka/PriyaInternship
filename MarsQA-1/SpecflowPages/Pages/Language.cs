@@ -1,5 +1,6 @@
 ﻿using MarsQA_1.Helpers;
 using MarsQA_1.SpecflowPages.Helpers;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -18,72 +19,73 @@ namespace MarsQA_1.SpecflowPages.Pages
         private static IWebElement AddLanguageTextBox => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[1]/input"));
         private static IWebElement LanguageLevelDropdown => Driver.driver.FindElement(By.XPath(".//*[@name='level']"));
         private static IWebElement AddButton => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[3]/input[1]"));
-        private static IWebElement ActualLanguage => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/thead/tr/th[1]"));
-        private static IWebElement ActualLanguageLevel => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/thead/tr/th[2]"));
-        private static IWebElement EditLanguageButton => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[1]/tr/td[3]/span[1]"));
         private static IWebElement EditLanguageTextBox => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[1]/tr/td/div/div[1]/input"));
-        private static IWebElement EditLanguageLevelDropdown => Driver.driver.FindElement(By.XPath(".//*[@name='level']"));
-        private static IWebElement UpdateLanguageButton => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[1]/tr/td/div/span/input[1]"));
         private static IWebElement EditedLanguage => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[1]/tr/td[1]"));
         private static IWebElement EditedLanguageLevel => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[1]/tr/td[2]"));
-        private static IWebElement DeleteLanguageButton => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[1]/tr/td[3]/span[2]"));
-        private static IWebElement DeletedLanguage => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[1]/tr/td[1]"));
-        private static IWebElement DeletedLanguageLevel => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[1]/tr/td[2]"));
+        private static IWebElement UpdateLanguageButton => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[1]/tr/td/div/span/input[1]"));
+       private static IWebElement DeletedRecord => Driver. driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[1]/tr"));
 
-        internal void AddLanguage(IWebDriver driver, string Language, string LanguageLevel)
-        {
-          LanguageTab.Click();
-          Wait.ElementToBeClickable(driver, "XPath", "//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/thead/tr/th[3]/div", 2);
-          AddLanguageButton.Click();
-          AddLanguageTextBox.SendKeys(Language);
-          SelectElement element = new SelectElement(LanguageLevelDropdown);
-          element.SelectByValue(LanguageLevel);
-          AddButton.Click();
-          
-
-        }
-        public string GetLanguage(IWebDriver driver)
-        {
-            return ActualLanguage.Text;
-        }
-        public string GetLanguageLevel(IWebDriver driver)
-        {
-            return ActualLanguageLevel.Text;
-        }
-        internal void EditLanguage(IWebDriver driver, string Language1, string LanguageLevel1)
+        public void AddLanguage(IWebDriver driver, string Language, string LanguageLevel)
         {
             LanguageTab.Click();
-            IWebElement FindCreatedLanguage = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[1]/tr"));
-            EditLanguageButton.Click();
+            Wait.ElementToBeClickable(driver, "XPath", "//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/thead/tr/th[3]/div", 2);
+            AddLanguageButton.Click();
+            AddLanguageTextBox.SendKeys(Language);
+            SelectElement element = new SelectElement(LanguageLevelDropdown);
+            element.SelectByValue(LanguageLevel);
+            AddButton.Click();
+        }
+
+        public int ReadLanguagerecord(IWebDriver driver)
+        {
+            IList<IWebElement> actualLanguageRecord = driver.FindElements(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody"));
+            foreach (IWebElement aPart in actualLanguageRecord)
+            {
+                
+                Console.WriteLine(aPart.Text);
+
+            }
+            int count = actualLanguageRecord.Count;
+            return count;
+
+        }
+        public void EditLanguageButton(string Language)
+        {
+            LanguageTab.Click();
+            IWebElement EditButton = Driver.driver.FindElement(By.XPath("//td[text()='" + Language + "']/following::td[2]/descendant::i[@class='outline write icon']"));
+            EditButton.Click();
+        }
+        internal void EditLanguage(string Language1, string LanguageLevel1)
+        {
             EditLanguageTextBox.Clear();
             EditLanguageTextBox.SendKeys(Language1);
-            SelectElement element = new SelectElement(EditLanguageLevelDropdown);
+            SelectElement element = new SelectElement(LanguageLevelDropdown);
             element.SelectByValue(LanguageLevel1);
             UpdateLanguageButton.Click();
 
         }
         public string GeteditedLanguage(IWebDriver driver)
         {
-            return EditedLanguage.Text;
+            string EditedLanguagetext = EditedLanguage.Text;
+            return EditedLanguagetext;
         }
         public string GeteditedLanguageLevel(IWebDriver driver)
         {
-            return EditedLanguageLevel.Text;
+            string EditedLanguageLeveltext = EditedLanguageLevel.Text;
+            return EditedLanguageLeveltext;
         }
-        internal void DeleteLanguage(IWebDriver driver)
+        internal void DeleteLanguage(string Language1)
         {
             LanguageTab.Click();
-            IWebElement FindEditedLanguage = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[1]/tr/td[1]"));
+            IWebElement DeleteLanguageButton = Driver.driver.FindElement(By.XPath("//td[text()='" + Language1 + "']/following::td[2]/descendant::i[@class='remove icon']"));
             DeleteLanguageButton.Click();
         }
-        public string GetDeletedLanguage(IWebDriver driver)
+        public string VerifyDeletedLanguage(IWebDriver driver)
         {
-            return DeletedLanguage.Text;
+            string deletedrecordtext = DeletedRecord.Text;
+            return deletedrecordtext;
         }
-        public string GetDeletedLanguageLevel(IWebDriver driver)
-        {
-            return DeletedLanguageLevel.Text;
-        }
+
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MarsQA_1.Helpers;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -20,47 +21,38 @@ namespace MarsQA_1.SpecflowPages.Pages
         private static IWebElement AddDegreeTextBox => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/div/div[2]/div[2]/input"));
         private static IWebElement YearDropDown => Driver.driver.FindElement(By.XPath(".//*[@name='yearOfGraduation']"));
         private static IWebElement AddEducationButton => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/div/div[3]/div/input[1]"));
-        private static IWebElement ActualCountry => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody/tr/td[1]"));
-        private static IWebElement ActualUniversity => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody/tr/td[2]"));
-        private static IWebElement ActualTitle => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody/tr/td[3]"));
-        private static IWebElement ActualDegree => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody/tr/td[4]"));
-        private static IWebElement ActualYear => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody/tr/td[5]"));
+        //private static IWebElement ActualEducationRecord => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody[last()]"));
+// private static IWebElement ActualUniversity => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody/tr/td[2]"));
+//  private static IWebElement ActualTitle => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody/tr/td[3]"));
+// private static IWebElement ActualDegree => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody/tr/td[4]"));
+// private static IWebElement ActualYear => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody/tr/td[5]"));
 
-        internal void AddEducation(IWebDriver driver, string Country, string University, string Title, string Degree, string Year)
+        internal void AddEducation(string Country, string University, string Title, string Degree, int Year)
         {
-            EducationTab.Click();
-            AddButton.Click();
-            SelectElement element = new SelectElement(CountryDropDown);
-            element.SelectByValue(Country);
-            AddNameTextBox.SendKeys(University);
-            SelectElement element1 = new SelectElement(TitleDropDown);
-            element1.SelectByValue(Title);
-            AddDegreeTextBox.SendKeys(Degree);
-            SelectElement element2 = new SelectElement(YearDropDown);
-            element2.SelectByValue(Year);
-            AddEducationButton.Click();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
+                EducationTab.Click();
+                AddButton.Click();
+                SelectElement element = new SelectElement(CountryDropDown);
+                element.SelectByValue(Country);
+                AddNameTextBox.SendKeys(University);
+                SelectElement element1 = new SelectElement(TitleDropDown);
+                element1.SelectByValue(Title);
+                AddDegreeTextBox.SendKeys(Degree);
+                SelectElement element2 = new SelectElement(YearDropDown);
+                element2.SelectByValue(Year.ToString());
+                AddEducationButton.Click(); 
+        }
+        public int ReadEducationrecord(IWebDriver driver)
+        {
+            IList<IWebElement> actualEducationRecord = driver.FindElements(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody"));
+            foreach (IWebElement aPart in actualEducationRecord)
+            {
+                Console.WriteLine(aPart.Text);
+
+            }
+            int count = actualEducationRecord.Count;
+            return count;
 
         }
-        public string GetCountry(IWebDriver driver)
-        {
-            return ActualCountry.Text;
-        }
-        public string GetUniversity(IWebDriver driver)
-        {
-            return ActualUniversity.Text;
-        }
-        public string GetTitle(IWebDriver driver)
-        {
-            return ActualTitle.Text;
-        }
-        public string GetDegree(IWebDriver driver)
-        {
-            return ActualDegree.Text;
-        }
-        public string GetYear(IWebDriver driver)
-        {
-            return ActualYear.Text;
-        }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MarsQA_1.Helpers;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -18,32 +19,34 @@ namespace MarsQA_1.SpecflowPages.Pages
         private static IWebElement AddCertifiedFromTextBox => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/div/div[2]/div[1]/input"));
         private static IWebElement YearDropDown => Driver.driver.FindElement(By.XPath(".//*[@name='certificationYear']"));
         private static IWebElement AddCertificationButton => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/div/div[3]/input[1]"));
-        private static IWebElement ActualCertificate => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/thead/tr/th[1]"));
-        private static IWebElement ActualCertifiedFrom => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/thead/tr/th[2]"));
-        private static IWebElement ActualYear => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/thead/tr/th[3]"));
+        //private static IWebElement ActualCertificateRecord => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/tbody[last()]"));
+       // private static IWebElement ActualCertifiedFrom => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/thead/tr/th[2]"));
+       // private static IWebElement ActualYear => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/thead/tr/th[3]"));
 
-        public void AddCertification(IWebDriver driver, string Certificate, string CertifiedFrom, string Year)
+        public void AddCertification(string Certificate, string CertifiedFrom, string Year)
         {
-            CertificationTab.Click();
-            AddNewButton.Click();
-            AddCertificateTextBox.SendKeys(Certificate);
-            AddCertifiedFromTextBox.SendKeys(CertifiedFrom);
-            SelectElement element3 = new SelectElement(YearDropDown);
-            element3.SelectByValue(Year);
-            AddCertificationButton.Click();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
+            
+                CertificationTab.Click();
+                AddNewButton.Click();
+                AddCertificateTextBox.SendKeys(Certificate);
+                AddCertifiedFromTextBox.SendKeys(CertifiedFrom);
+                SelectElement element3 = new SelectElement(YearDropDown);
+                element3.SelectByValue(Year);
+                AddCertificationButton.Click();
         }
-        public string GetCertificate(IWebDriver driver)
+
+        public int ReadCertificationrecord(IWebDriver driver)
         {
-            return ActualCertificate.Text;
+            IList<IWebElement> actualCertificationRecord = driver.FindElements(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/tbody"));
+            foreach (IWebElement aPart in actualCertificationRecord)
+            {
+                Console.WriteLine(aPart.Text);
+
+            }
+            int count = actualCertificationRecord.Count;
+            return count;
+
         }
-        public string GetCertifiedFrom(IWebDriver driver)
-        {
-            return ActualCertifiedFrom.Text;
-        }
-        public string GetYear(IWebDriver driver)
-        {
-            return ActualYear.Text;
-        }
+
     }
 }

@@ -10,7 +10,6 @@ namespace MarsQA_1.StepDefinitions
     [Binding]
     public class SkillsToProfileStepDefinitions : Driver
     {
-        Skills addSkillObj = new Skills();
 
         [Given(@"\[Navigate to Skills tab]")]
         public void GivenNavigateToSkillsTab()
@@ -20,25 +19,45 @@ namespace MarsQA_1.StepDefinitions
         [When(@"\[I add '([^']*)' and '([^']*)' to Skills tab]")]
         public void WhenIAddAndToSkillsTab(string Skill, string SkillLevel)
         {
+            Skills addSkillObj = new Skills();
             addSkillObj.AddSkills(driver, Skill, SkillLevel);
 
         }
 
-        [Then(@"\[The '([^']*)' and '([^']*)' should be created successfully]")]
-        public void ThenTheAndShouldBeCreatedSuccessfully(string Skill, string SkillLevel)
+        [Then(@"\[The Skill Record should be created successfully]")]
+        public void ThenTheSkillRecordShouldBeCreatedSuccessfully()
         {
-            string ActualSkill= addSkillObj.GetSkill(driver);
-            string ActualSkillLevel = addSkillObj.GetSkillLevel(driver);
-            Assert.That(ActualSkill != Skill, "Actual Skill and Expected Skill do not match");
-            Assert.That(ActualSkillLevel != SkillLevel, "Actual SkillLevel and Expected SkillLevel do not match");
+            Assert.Pass();
         }
-        [Given(@"\[Navigate to the Skills tab]")]
-        public void GivenNavigateToTheSkillsTab()
+
+        [Given(@": I am on my Profile Page\.")]
+        public void GivenIAmOnMyProfilePage_()
         {
+            HomePage homePage = new HomePage();
+            homePage.GoToProfile(driver);
         }
+
+        [Then(@": '([^']*)' Records must have been created successfully in Skills tab\.")]
+        public void ThenRecordsMustHaveBeenCreatedSuccessfullyInSkillsTab_(int p0)
+        {
+            Skills addSkillObj = new Skills();
+            int actualcount = addSkillObj.ReadSkillrecord(driver);
+            Assert.AreEqual(actualcount, p0);
+        }
+
+
+        [Given(@"\[Click on Edit Button near '([^']*)'\.]")]
+        public void GivenClickOnEditButtonNear_(string Skill)
+        {
+            Skills addSkillObj = new Skills();
+            addSkillObj.EditSkillButton(Skill);
+
+        }
+
         [When(@"\[I update '([^']*)' and '([^']*)' to Skills tab]")]
         public void WhenIUpdateAndToSkillsTab(string Skill, string SkillLevel)
         {
+            Skills addSkillObj = new Skills();
             addSkillObj.EditSkills(driver,Skill,SkillLevel);
 
         }
@@ -46,33 +65,38 @@ namespace MarsQA_1.StepDefinitions
         [Then(@"\[The '([^']*)' and '([^']*)' should be updated successfully]")]
         public void ThenTheAndShouldBeUpdatedSuccessfully(string Skill1, string SkillLevel1)
         {
-            string EditedSkill = addSkillObj.GeteditedSkill(driver);
-            string EditedSkillLevel = addSkillObj.GeteditedSkillLevel(driver);
-            Assert.That(EditedSkill != Skill1, "Actual Skill and Expected Skill not match");
-            Assert.That(EditedSkillLevel != SkillLevel1, "Actual SkillLevel and Expected SkillLevel not match ");
-          
-          
+            Console.WriteLine("Skill Record updated");
         }
+        [Then(@"Then the record is updated with new details '([^']*)' and '([^']*)'\.")]
+        public void ThenThenTheRecordIsUpdatedWithNewDetailsAnd_(string Skill1, string SkillLevel1)
+        {
+            Skills addSkillObj = new Skills();
+            string EditedSkill = addSkillObj.GetEditedSkill(driver);
+            Assert.AreNotEqual(EditedSkill, Skill1);
+            string EditedSkillLevel = addSkillObj.GetEditedSkillLevel(driver);
+            Assert.AreNotEqual(EditedSkillLevel, SkillLevel1);
+        }
+
         [Given(@"\[Navigate to the Skills tab\.]")]
         public void GivenNavigateToTheSkillsTab_()
         {
             
         }
 
-        [When(@"\[I delete a skill in Skills tab]")]
-        public void WhenIDeleteASkillInSkillsTab()
+        [When(@"\[I delete '([^']*)' in Skills tab]")]
+        public void WhenIDeleteInSkillsTab(string Skill1)
         {
-            addSkillObj.DeleteSkill(driver);
+            Skills addSkillObj = new Skills();
+            addSkillObj.DeleteSkill(Skill1);
 
         }
 
-        [Then(@"\[The skill should be deleted successfully]")]
-        public void ThenTheSkillShouldBeDeletedSuccessfully()
+        [Then(@"\[The '([^']*)' should be deleted successfully\.]")]
+        public void ThenTheShouldBeDeletedSuccessfully_(string Skill1)
         {
-            string DeletedSkill = addSkillObj.GetDeletedSkill(driver);
-            string DeletedSkillLevel = addSkillObj.GetDeletedSkillLevel(driver);
-            Assert.That(DeletedSkill == "SpecFlow", "Skill deleted");
-            Assert.That(DeletedSkillLevel == "Intermediate", "SkillLevel deleted");
+            Skills addSkillObj = new Skills();
+            string record = addSkillObj.VerifyDeletedSkill(driver);
+            Assert.That(record != Skill1, "Skill Record not deleted");
         }
 
 

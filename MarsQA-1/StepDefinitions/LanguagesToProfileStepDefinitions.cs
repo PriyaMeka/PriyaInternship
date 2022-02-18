@@ -12,8 +12,6 @@ namespace MarsQA_1.StepDefinitions
     [Binding]
     public class LanguagesToProfileStepDefinitions : Driver
     {
-        Language addLanguageObj = new Language();
-
         [Given(@"\[Navigate to Language tab]")]
         public void GivenNavigateToLanguageTab()
         {
@@ -21,58 +19,80 @@ namespace MarsQA_1.StepDefinitions
         [When(@"\[I add '([^']*)' and '([^']*)' to Languages tab]")]
         public void WhenIAddAndToLanguagesTab(string Language, string LanguageLevel)
         {
+            Language addLanguageObj = new Language();
             addLanguageObj.AddLanguage(driver, Language, LanguageLevel);
         }    
-        [Then(@"\[The '([^']*)' and '([^']*)' should be created successfully\.]")]
-        public void ThenTheAndShouldBeCreatedSuccessfully_(string Language, string LanguageLevel)
+        [Then(@"\[The Record should be created successfully\.]")]
+        public void ThenTheRecordShouldBeCreatedSuccessfully_()
         {
-            string ActualLanguage = addLanguageObj.GetLanguage(driver);
-            string ActualLanguageLevel = addLanguageObj.GetLanguageLevel(driver);
-            Assert.That(ActualLanguage != Language, "Actual Language and Expected Language do not match");
-            Assert.That(ActualLanguageLevel != LanguageLevel, "Actual LanguageLevel and Expected  LanguageLevel do not match");
+         Assert.Pass();
         }
-        [Given(@"\[Navigate to the Languages tab]")]
-        public void GivenNavigateToTheLanguagesTab()
+        [Given(@": I am on my Profile Page")]
+        public void GivenIAmOnMyProfilePage()
+        {
+            HomePage homePage = new HomePage();
+            homePage.GoToProfile(driver);
+        }
+
+        [Then(@": '([^']*)' Records must have been created successfully\.")]
+        public void ThenRecordsMustHaveBeenCreatedSuccessfully_(int p0)
+        {
+            Language addLanguageObj = new Language();
+            int actualcount = addLanguageObj.ReadLanguagerecord(driver);
+            Assert.AreEqual(actualcount, p0);
+
+        }
+        [Given(@"\[Click on Edit Button near '([^']*)']")]
+        public void GivenClickOnEditButtonNear(string Language)
         {
 
+            Language addLanguageObj = new Language();
+            addLanguageObj.EditLanguageButton(Language);
         }
 
         [When(@"\[I update '([^']*)' and '([^']*)' in Languages tab]")]
         public void WhenIUpdateAndInLanguagesTab(string Language1, string LanguageLevel1)
         {
-            addLanguageObj.EditLanguage(driver, Language1, LanguageLevel1);
+            Language addLanguageObj = new Language();
+            addLanguageObj.EditLanguage(Language1, LanguageLevel1);
 
         }
 
         [Then(@"\[The '([^']*)' and '([^']*)' should be updated successfully\.]")]
         public void ThenTheAndShouldBeUpdatedSuccessfully_(string Language1, string LanguageLevel1)
         {
-            string EditedLanguage = addLanguageObj.GeteditedLanguage(driver);
-            string EditedLanguageLevel = addLanguageObj.GeteditedLanguageLevel(driver);
-            Assert.That(EditedLanguage != Language1, "Edited Language and Expected Language not match");
-            Assert.That(EditedLanguageLevel == LanguageLevel1, "Edited LanguageLevel and Expected LanguageLevel match");
+            Console.WriteLine("Record updated");
         }
+        [Then(@": the record is updated with new details '([^']*)' ,'([^']*)'\.")]
+        public void ThenTheRecordIsUpdatedWithNewDetails_(string Language1, string LanguageLevel1)
+        {
+            Language addLanguageObj = new Language();
+            string editedlanguage = addLanguageObj.GeteditedLanguage(driver);
+            Assert.AreEqual(editedlanguage, Language1);
+            string editedlevel = addLanguageObj.GeteditedLanguageLevel(driver);
+            Assert.AreEqual(editedlevel, LanguageLevel1);
+        }
+
 
         [Given(@"\[Navigate to the Languages tab\.]")]
         public void GivenNavigateToTheLanguagesTab_()
         {
 
         }
-
-        [When(@"\[I delete a Language in Languages tab]")]
-        public void WhenIDeleteALanguageInLanguagesTab()
+        [When(@"\[I delete a '([^']*)' in Languages tab]")]
+        public void WhenIDeleteAInLanguagesTab(string Language1)
         {
-            addLanguageObj.DeleteLanguage(driver);
+            Language addLanguageObj = new Language();
+            addLanguageObj.DeleteLanguage(Language1);
 
         }
 
-        [Then(@"\[The language should be deleted successfully]")]
-        public void ThenTheLanguageShouldBeDeletedSuccessfully()
+        [Then(@"\[The '([^']*)' should be deleted successfully]")]
+        public void ThenTheShouldBeDeletedSuccessfully(string Language1)
         {
-            string DeletedLanguage = addLanguageObj.GetDeletedLanguage(driver);
-            string DeletedLanguageLevel = addLanguageObj.GetDeletedLanguageLevel(driver);
-            Assert.That(DeletedLanguage == "Sanskrit", "Language Deleted");
-            Assert.That(DeletedLanguageLevel == "Native/Bilingual", "LanguageLevel deleted");
+            Language addLanguageObj = new Language();
+            string record = addLanguageObj.VerifyDeletedLanguage(driver);
+            Assert.That(record != Language1, "Language not deleted");
         }
 
     }

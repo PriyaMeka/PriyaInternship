@@ -153,6 +153,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SpecflowPages\Helpers\Wait.cs" />
+    <Compile Include="SpecflowPages\Pages\HomePage.cs" />
     <Compile Include="SpecflowPages\Pages\Skills.cs" />
     <Compile Include="SpecflowPages\Pages\Certification.cs" />
     <Compile Include="SpecflowPages\Pages\Education.cs" />

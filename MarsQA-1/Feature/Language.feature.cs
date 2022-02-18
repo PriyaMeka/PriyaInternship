@@ -116,19 +116,19 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When(string.Format("[I add \'{0}\' and \'{1}\' to Languages tab]", language, languageLevel), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
- testRunner.Then(string.Format("[The \'{0}\' and \'{1}\' should be created successfully.]", language, languageLevel), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("[The Record should be created successfully.]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("2  [update language in Language tab]")]
-        [NUnit.Framework.TestCaseAttribute("Sanskrit", "Native/Bilingual", null)]
-        public virtual void _2UpdateLanguageInLanguageTab(string language1, string languageLevel1, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("2.Reading the record created for Language")]
+        [NUnit.Framework.TestCaseAttribute("3", null)]
+        public virtual void _2_ReadingTheRecordCreatedForLanguage(string count, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("2  [update language in Language tab]", null, exampleTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("2.Reading the record created for Language", null, exampleTags);
 #line 17
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -150,25 +150,23 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 18
- testRunner.Given("[Navigate to the Languages tab]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+testRunner.Given(": I am on my Profile Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 19
- testRunner.When(string.Format("[I update \'{0}\' and \'{1}\' in Languages tab]", language1, languageLevel1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 20
- testRunner.Then(string.Format("[The \'{0}\' and \'{1}\' should be updated successfully.]", language1, languageLevel1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+testRunner.Then(string.Format(": \'{0}\' Records must have been created successfully.", count), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("3 [delete language in Language tab]")]
-        public virtual void _3DeleteLanguageInLanguageTab()
+        [NUnit.Framework.DescriptionAttribute("3  [update language in Language tab]")]
+        [NUnit.Framework.TestCaseAttribute("Hindi", "Sanskrit", "Native/Bilingual", null)]
+        public virtual void _3UpdateLanguageInLanguageTab(string language, string language1, string languageLevel1, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("3 [delete language in Language tab]", null, ((string[])(null)));
-#line 26
+            string[] tagsOfScenario = exampleTags;
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("3  [update language in Language tab]", null, exampleTags);
+#line 24
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -188,14 +186,91 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
+#line 25
+ testRunner.Given(string.Format("[Click on Edit Button near \'{0}\']", language), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 26
+ testRunner.When(string.Format("[I update \'{0}\' and \'{1}\' in Languages tab]", language1, languageLevel1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
 #line 27
+ testRunner.Then(string.Format("[The \'{0}\' and \'{1}\' should be updated successfully.]", language1, languageLevel1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("4.Reading the language that has been edited")]
+        [NUnit.Framework.TestCaseAttribute("Sanskrit", "Native/Bilingual", null)]
+        public virtual void _4_ReadingTheLanguageThatHasBeenEdited(string language1, string languageLevel1, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("4.Reading the language that has been edited", null, exampleTags);
+#line 33
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 34
+testRunner.Given(": I am on my Profile Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 35
+testRunner.Then(string.Format(": the record is updated with new details \'{0}\' ,\'{1}\'.", language1, languageLevel1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("5 [delete language in Language tab]")]
+        [NUnit.Framework.TestCaseAttribute("Sanskrit", null)]
+        public virtual void _5DeleteLanguageInLanguageTab(string language1, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("5 [delete language in Language tab]", null, exampleTags);
+#line 40
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 41
  testRunner.Given("[Navigate to the Languages tab.]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 28
- testRunner.When("[I delete a Language in Languages tab]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 42
+ testRunner.When(string.Format("[I delete a \'{0}\' in Languages tab]", language1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 29
-    testRunner.Then("[The language should be deleted successfully]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 43
+    testRunner.Then(string.Format("[The \'{0}\' should be deleted successfully]", language1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

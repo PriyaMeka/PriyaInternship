@@ -3,13 +3,19 @@
 Seller is able to add Certification to profile page
 
 @tag1
-Scenario Outline: [Add Certification to Profile]
-	Given [Navigate to Certification tab]
+Scenario Outline: 1. [Add Certification to Profile]
+	Given I am on my Profile Page
 	When [I add '<Certificate>' and '<CertifiedFrom>' and '<Year>' to Certification tab]
-	Then [The '<Certificate>' and '<CertifiedFrom>' and '<Year>' should be created successfully.]
+	Then [The Certification tab with '<Certificate>' should be created successfully.]
 
 Examples: 
-	| Certificate                              | CertifiedFrom    | Year |
+	| Certificate                                | CertifiedFrom      | Year |
 	| Certified Tester Foundation Level (CTFL) | ISTQB            | 2014 |
 	| Certified Test Analyst                   | Industry Connect | 2022 |
     
+Scenario Outline: 2.Reading the record created for Certification
+Given  I am on my Profile Page
+Then : '<count>' Records must have been created successfully
+Examples: 
+| count |
+| 2     |
