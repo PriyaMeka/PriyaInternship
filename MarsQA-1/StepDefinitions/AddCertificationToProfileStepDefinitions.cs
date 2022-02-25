@@ -26,17 +26,8 @@ namespace MarsQA_1.StepDefinitions
         [Then(@"\[The Certification tab with '([^']*)' should be created successfully\.]")]
         public void ThenTheCertificationTabWithShouldBeCreatedSuccessfully_(string Certificate)
         {
-            Assert.Pass();
-        }
-     
-        [Then(@": '([^']*)' Records must have been created successfully")]
-        public void ThenRecordsMustHaveBeenCreatedSuccessfully(int p0)
-        {
             Certification addCertificationObj = new Certification();
-            int actualcount = addCertificationObj.ReadCertificationrecord(driver);
-            Assert.AreEqual(actualcount, p0);
+            addCertificationObj.VerifyCertificationAdded(Certificate);
         }
-
-
     }
 }

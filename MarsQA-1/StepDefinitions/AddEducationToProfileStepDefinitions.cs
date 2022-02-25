@@ -27,16 +27,8 @@ namespace MarsQA_1.StepDefinitions
         [Then(@"\[The Education Record with '([^']*)' should be created successfully]")]
         public void ThenTheEducationRecordWithShouldBeCreatedSuccessfully(string Degree)
         {
-            Assert.Pass();
-        }
-        [Then(@": '([^']*)' Records must have been created successfully for education tab\.")]
-        public void ThenRecordsMustHaveBeenCreatedSuccessfullyForEducationTab_(int p0)
-        {
             Education addEducationObj = new Education();
-            int actualcount = addEducationObj.ReadEducationrecord(driver);
-            Assert.AreEqual(actualcount, p0);
+            addEducationObj.VerifyEducationAdded(Degree);
         }
-
-
     }
 }

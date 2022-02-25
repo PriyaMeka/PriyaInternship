@@ -35,19 +35,20 @@ namespace MarsQA_1.SpecflowPages.Pages
             element.SelectByValue(LanguageLevel);
             AddButton.Click();
         }
-
-        public int ReadLanguagerecord(IWebDriver driver)
+        public void VerifyAddLanguage(string Language)
         {
-            IList<IWebElement> actualLanguageRecord = driver.FindElements(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody"));
-            foreach (IWebElement aPart in actualLanguageRecord)
+            bool LanguageAdded = false;
+            IWebElement tableElement = Driver.driver.FindElement(By.XPath("(//table[@class='ui fixed table'])[1]"));
+            IList<IWebElement> tableRow = tableElement.FindElements(By.TagName("tbody"));
+            foreach (IWebElement row in tableRow)
             {
-                
-                Console.WriteLine(aPart.Text);
-
+                if (row.Text.Contains(Language))
+                {
+                    LanguageAdded = true;
+                    Console.WriteLine("Language Added");
+                    break;
+                }
             }
-            int count = actualLanguageRecord.Count;
-            return count;
-
         }
         public void EditLanguageButton(string Language)
         {
@@ -64,15 +65,19 @@ namespace MarsQA_1.SpecflowPages.Pages
             UpdateLanguageButton.Click();
 
         }
-        public string GeteditedLanguage(IWebDriver driver)
+        public void VerifyLanguageUpdated(string Language1, string LanguageLevel1)
+
         {
-            string EditedLanguagetext = EditedLanguage.Text;
-            return EditedLanguagetext;
-        }
-        public string GeteditedLanguageLevel(IWebDriver driver)
-        {
-            string EditedLanguageLeveltext = EditedLanguageLevel.Text;
-            return EditedLanguageLeveltext;
+            LanguageTab.Click();
+            IList<IWebElement> LangTableRow = Driver.driver.FindElements(By.XPath("(//table[@class='ui fixed table'])[1]/tbody/tr"));
+            var rownum = LangTableRow.Count;
+            for (var i = 1; i <= rownum; i++)
+            {
+                if ((Language1 == Driver.driver.FindElement(By.XPath("((//table[@class='ui fixed table'])[1]/tbody/tr[1]/td[1])[" + i + "]")).Text) &&
+                    (LanguageLevel1 == Driver.driver.FindElement(By.XPath("((//table[@class='ui fixed table'])[1]/tbody/tr[1]/td[2])[" + i + "]")).Text))
+                    Console.WriteLine("Language level updated");
+                break;
+            }
         }
         internal void DeleteLanguage(string Language1)
         {

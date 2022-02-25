@@ -74,11 +74,11 @@ namespace MarsQA_1.Feature
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("[Add Education to Profile]")]
+        [NUnit.Framework.DescriptionAttribute("1 [Add Education to Profile]")]
         [NUnit.Framework.CategoryAttribute("tag1")]
         [NUnit.Framework.TestCaseAttribute("India", "JNTU", "M.Tech", "Software Engineering", "2013", null)]
         [NUnit.Framework.TestCaseAttribute("India", "JNTU", "B.Tech", "Information Technology", "2011", null)]
-        public virtual void AddEducationToProfile(string country, string university, string title, string degree, string year, string[] exampleTags)
+        public virtual void _1AddEducationToProfile(string country, string university, string title, string degree, string year, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "tag1"};
@@ -87,7 +87,7 @@ namespace MarsQA_1.Feature
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             string[] tagsOfScenario = @__tags;
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[Add Education to Profile]", null, @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("1 [Add Education to Profile]", null, @__tags);
 #line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -116,43 +116,6 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
 #line 9
  testRunner.Then(string.Format("[The Education Record with \'{0}\' should be created successfully]", degree), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("2.Reading the record created for Education tab")]
-        [NUnit.Framework.TestCaseAttribute("2", null)]
-        public virtual void _2_ReadingTheRecordCreatedForEducationTab(string count, string[] exampleTags)
-        {
-            string[] tagsOfScenario = exampleTags;
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("2.Reading the record created for Education tab", null, exampleTags);
-#line 16
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 17
-testRunner.Given("I am on my Profile Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 18
-testRunner.Then(string.Format(": \'{0}\' Records must have been created successfully for education tab.", count), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

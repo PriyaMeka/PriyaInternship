@@ -41,17 +41,20 @@ namespace MarsQA_1.SpecflowPages.Pages
                 element2.SelectByValue(Year.ToString());
                 AddEducationButton.Click(); 
         }
-        public int ReadEducationrecord(IWebDriver driver)
+        public void VerifyEducationAdded(string Degree)
         {
-            IList<IWebElement> actualEducationRecord = driver.FindElements(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody"));
-            foreach (IWebElement aPart in actualEducationRecord)
+            bool EducationRecord = false;
+            IWebElement tableElement = Driver.driver.FindElement(By.XPath("(//table[@class='ui fixed table'])[3]"));
+            IList<IWebElement> tableRow = tableElement.FindElements(By.TagName("tbody"));
+            foreach (IWebElement row in tableRow)
             {
-                Console.WriteLine(aPart.Text);
-
+                if (row.Text.Contains(Degree))
+                {
+                    EducationRecord = true;
+                    Console.WriteLine("Education detail added");
+                    break;
+                }
             }
-            int count = actualEducationRecord.Count;
-            return count;
-
         }
 
     }

@@ -117,54 +117,17 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When(string.Format("[I add \'{0}\' and \'{1}\' to Skills tab]", skill, skillLevel), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 10
- testRunner.Then("[The Skill Record should be created successfully]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("[The \'{0}\' Record should be added successfully]", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("2.Reading the records created for Skills Tab")]
-        [NUnit.Framework.TestCaseAttribute("4", null)]
-        public virtual void _2_ReadingTheRecordsCreatedForSkillsTab(string count, string[] exampleTags)
-        {
-            string[] tagsOfScenario = exampleTags;
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("2.Reading the records created for Skills Tab", null, exampleTags);
-#line 19
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 20
-testRunner.Given(": I am on my Profile Page.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 21
-testRunner.Then(string.Format(": \'{0}\' Records must have been created successfully in Skills tab.", count), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("3.[update skills in Profile page]")]
+        [NUnit.Framework.DescriptionAttribute("2.[update skills in Profile page]")]
         [NUnit.Framework.CategoryAttribute("tag1")]
         [NUnit.Framework.TestCaseAttribute("C#", "SpecFlow", "Intermediate", null)]
-        public virtual void _3_UpdateSkillsInProfilePage(string skill, string skill1, string skillLevel1, string[] exampleTags)
+        public virtual void _2_UpdateSkillsInProfilePage(string skill, string skill1, string skillLevel1, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "tag1"};
@@ -173,8 +136,8 @@ testRunner.Then(string.Format(": \'{0}\' Records must have been created successf
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             string[] tagsOfScenario = @__tags;
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("3.[update skills in Profile page]", null, @__tags);
-#line 27
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("2.[update skills in Profile page]", null, @__tags);
+#line 21
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -194,13 +157,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 28
+#line 22
  testRunner.Given(string.Format("[Click on Edit Button near \'{0}\'.]", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 29
+#line 23
  testRunner.When(string.Format("[I update \'{0}\' and \'{1}\' to Skills tab]", skill1, skillLevel1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 30
+#line 24
  testRunner.Then(string.Format("[The \'{0}\' and \'{1}\' should be updated successfully]", skill1, skillLevel1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -208,50 +171,13 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("4. Reading the skill that has been edited")]
-        [NUnit.Framework.TestCaseAttribute("SpecFlow", "Intermediate", null)]
-        public virtual void _4_ReadingTheSkillThatHasBeenEdited(string skill1, string skillLevel1, string[] exampleTags)
-        {
-            string[] tagsOfScenario = exampleTags;
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("4. Reading the skill that has been edited", null, exampleTags);
-#line 36
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 37
-  testRunner.Given("[Navigate to the Skills tab.]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 38
-  testRunner.Then(string.Format("Then the record is updated with new details \'{0}\' and \'{1}\'.", skill1, skillLevel1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("5. [delete skills in Profile page]")]
+        [NUnit.Framework.DescriptionAttribute("3. [delete skills in Profile page]")]
         [NUnit.Framework.TestCaseAttribute("SpecFlow", null)]
-        public virtual void _5_DeleteSkillsInProfilePage(string skill1, string[] exampleTags)
+        public virtual void _3_DeleteSkillsInProfilePage(string skill1, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("5. [delete skills in Profile page]", null, exampleTags);
-#line 43
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("3. [delete skills in Profile page]", null, exampleTags);
+#line 31
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -271,13 +197,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 44
+#line 32
  testRunner.Given("[Navigate to the Skills tab.]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 45
+#line 33
  testRunner.When(string.Format("[I delete \'{0}\' in Skills tab]", skill1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 46
+#line 34
     testRunner.Then(string.Format("[The \'{0}\' should be deleted successfully.]", skill1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

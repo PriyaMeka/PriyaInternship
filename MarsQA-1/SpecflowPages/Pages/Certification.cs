@@ -35,17 +35,20 @@ namespace MarsQA_1.SpecflowPages.Pages
                 AddCertificationButton.Click();
         }
 
-        public int ReadCertificationrecord(IWebDriver driver)
+        public void VerifyCertificationAdded(string Certificate)
         {
-            IList<IWebElement> actualCertificationRecord = driver.FindElements(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/tbody"));
-            foreach (IWebElement aPart in actualCertificationRecord)
+            bool Certification = false;
+            IWebElement tableElement = Driver.driver.FindElement(By.XPath("(//table[@class='ui fixed table'])[4]"));
+            IList<IWebElement> tableRow = tableElement.FindElements(By.TagName("tbody"));
+            foreach (IWebElement row in tableRow)
             {
-                Console.WriteLine(aPart.Text);
-
+                if (row.Text.Contains(Certificate))
+                {
+                    Certification = true;
+                    Console.WriteLine("Certificate detail added");
+                    break;
+                }
             }
-            int count = actualCertificationRecord.Count;
-            return count;
-
         }
 
     }

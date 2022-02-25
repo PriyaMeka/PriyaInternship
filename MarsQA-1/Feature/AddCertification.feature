@@ -13,9 +13,3 @@ Examples:
 	| Certified Tester Foundation Level (CTFL) | ISTQB            | 2014 |
 	| Certified Test Analyst                   | Industry Connect | 2022 |
     
-Scenario Outline: 2.Reading the record created for Certification
-Given  I am on my Profile Page
-Then : '<count>' Records must have been created successfully
-Examples: 
-| count |
-| 2     |

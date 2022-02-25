@@ -19,11 +19,9 @@ namespace MarsQA_1.SpecflowPages.Pages
         private static IWebElement AddSkillTextBox => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/div/div[1]/input"));
         private static IWebElement SkillLevelDropdown => Driver.driver.FindElement(By.XPath(".//*[@name='level']"));
         private static IWebElement AddSkillButton => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/div/span/input[1]"));
-        private static IWebElement EditSkillTextBox => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[3]/tr/td/div/div[1]/input"));
-        private static IWebElement UpdateSkillButton => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[3]/tr/td/div/span/input[1]"));
-        private static IWebElement EditedSkill => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[3]/tr/td[1]"));
-        private static IWebElement EditedSkillLevel => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[3]/tr/td[2]"));
-        private static IWebElement DeletedRecord => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[3]/tr"));
+        private static IWebElement EditSkillTextBox => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td/div/div[1]/input"));
+        private static IWebElement UpdateSkillButton => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td/div/span/input[1]"));
+        private static IWebElement DeletedRecord => Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr"));
 
         internal void AddSkills(IWebDriver driver,string Skill, string SkillLevel)
         {
@@ -37,18 +35,20 @@ namespace MarsQA_1.SpecflowPages.Pages
             
            
         }
-        public int ReadSkillrecord(IWebDriver driver)
+        public void VerifySkillAdded(string Skills)
         {
-            IList<IWebElement> ActualSkillRecord = driver.FindElements(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody"));
-            foreach (IWebElement aPart in ActualSkillRecord)
+            bool SkillFound = false;
+            IWebElement tableElement = Driver.driver.FindElement(By.XPath("(//table[@class='ui fixed table'])[2]"));
+            IList<IWebElement> tableRow = tableElement.FindElements(By.TagName("tbody"));
+            foreach (IWebElement row in tableRow)
             {
-
-                Console.WriteLine(aPart.Text);
-
+                if (row.Text.Contains(Skills))
+                {
+                    SkillFound = true;
+                    Console.WriteLine("Skill Added") ;
+                    break;
+                }
             }
-            int count = ActualSkillRecord.Count;
-            return count;
-
         }
         public void EditSkillButton(string Skill)
         {
@@ -56,23 +56,29 @@ namespace MarsQA_1.SpecflowPages.Pages
             IWebElement EditButton = Driver.driver.FindElement(By.XPath("//td[text()='" + Skill + "']/following::td[2]/descendant::i[@class='outline write icon']"));
             EditButton.Click();
         }
-        internal void EditSkills(IWebDriver driver,string Skill1,string SkillLevel1)
+        public void EditSkills(IWebDriver driver, string Skill1, string SkillLevel1)
         {
-                SkillTab.Click();
-                Wait.ElementToBeClickable(driver, "XPath", "//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td[3]/span[1]/i", 2);
-                EditSkillTextBox.Clear();
-                EditSkillTextBox.SendKeys(Skill1);
-                SelectElement element = new SelectElement(SkillLevelDropdown);
-                element.SelectByValue(SkillLevel1);
-                UpdateSkillButton.Click();
+            SkillTab.Click();
+            Wait.ElementToBeClickable(driver, "XPath", "//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td[3]/span[1]/i", 2);
+            EditSkillTextBox.Clear();
+            EditSkillTextBox.SendKeys(Skill1);
+            SelectElement element = new SelectElement(SkillLevelDropdown);
+            element.SelectByValue(SkillLevel1);
+            UpdateSkillButton.Click();
         }
-       public string GetEditedSkill(IWebDriver driver)
-       {  
-            return EditedSkill.Text;
-       }
-        public string GetEditedSkillLevel(IWebDriver driver)
+        public void VerifySkillUpdated(string Skill1, string SkillLevel1)
+
         {
-            return EditedSkillLevel.Text;
+            SkillTab.Click();
+            IList<IWebElement> LangTableRow = Driver.driver.FindElements(By.XPath("(//table[@class='ui fixed table'])[2]/tbody/tr"));
+            var rownum = LangTableRow.Count;
+            for (var i = 1; i <= rownum; i++)
+            {
+                if ((Skill1 == Driver.driver.FindElement(By.XPath("((//table[@class='ui fixed table'])[2]/tbody/tr[1]/td[1])[" + i + "]")).Text) &&
+                    (SkillLevel1 == Driver.driver.FindElement(By.XPath("((//table[@class='ui fixed table'])[2]/tbody/tr[1]/td[2])[" + i + "]")).Text))
+                    Console.WriteLine("Skill level updated");
+                break;
+            }
         }
         internal void DeleteSkill(string Skill1)
         {
